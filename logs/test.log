@@ -1,0 +1,64 @@
+13-06-2025 18:41:28: INFO: Starting application for the test session
+13-06-2025 18:41:28: INFO: ====== WebDriver manager ======
+13-06-2025 18:41:30: INFO: Get LATEST chromedriver version for google-chrome
+13-06-2025 18:41:30: INFO: Get LATEST chromedriver version for google-chrome
+13-06-2025 18:41:30: INFO: Driver [C:\Users\Pawan.Pawar\.wdm\drivers\chromedriver\win64\137.0.7151.70\chromedriver-win32/chromedriver.exe] found in cache
+13-06-2025 18:41:32: INFO: Starting Test: test_home_page
+13-06-2025 18:41:32: INFO: Opening URL: https://partner-dev-benefits.plansource.com
+13-06-2025 18:41:35: INFO: Verifying PlanSource Login page
+13-06-2025 18:41:35: INFO: Test Assertion: PlanSource Login page logo is displayed.
+13-06-2025 18:41:35: INFO: Test Complete: test_home_page
+13-06-2025 18:41:35: INFO: Starting Test: test_login_window_valid_cred
+13-06-2025 18:41:35: INFO: Username entered: plansource_test_admin
+13-06-2025 18:41:35: INFO: Password entered: password123
+13-06-2025 18:41:38: INFO: Clicked on Login button
+13-06-2025 18:41:38: INFO: Test Assertion: Dashboard
+13-06-2025 18:41:38: INFO: Test Complete: test_login_window_valid_cred
+13-06-2025 18:41:38: INFO: Starting Test: test_add_new_employee
+13-06-2025 18:41:39: INFO: Clicked on Add New Employee
+13-06-2025 18:41:39: INFO: Test Assertion: Add Employee
+13-06-2025 18:41:39: INFO: Test Complete: test_add_new_employee
+13-06-2025 18:41:39: INFO: Starting Test: test_add_new_employee_details
+13-06-2025 18:41:39: INFO: Password entered: password123
+13-06-2025 18:41:39: INFO: First Name entered: Roger
+13-06-2025 18:41:39: INFO: Middle Name entered: Nana
+13-06-2025 18:41:39: INFO: Last Name entered: Woakes
+13-06-2025 18:41:39: INFO: SSN entered: 131821445
+13-06-2025 18:41:40: INFO: Address entered: 62, WayStreet
+13-06-2025 18:41:40: INFO: City entered: Birmingham
+13-06-2025 18:41:40: INFO: State entered: Alabama
+13-06-2025 18:41:40: INFO: Zipcode entered: 35001
+13-06-2025 18:41:40: INFO: Country entered: Colombia
+13-06-2025 18:41:40: INFO: Email entered: example123@gmail.com
+13-06-2025 18:41:40: INFO: Communication mode entered: Email
+13-06-2025 18:41:40: INFO: Birthdate entered: 05/01/1997
+13-06-2025 18:41:40: INFO: Gender entered: Male
+13-06-2025 18:41:40: INFO: marital Status entered: Married
+13-06-2025 18:41:40: INFO: Hire date entered: 06/11/2025
+13-06-2025 18:41:40: INFO: Eligibility date entered: 06/11/2025
+13-06-2025 18:41:41: INFO: Employment level entered: F
+13-06-2025 18:41:41: INFO: Location entered: SCA
+13-06-2025 18:41:41: INFO: Current salary entered: 450
+13-06-2025 18:41:41: INFO: Benefit salary entered: 800
+13-06-2025 18:41:41: INFO: Pay rate entered: 125000
+13-06-2025 18:41:41: INFO: Payroll entered: Semi-monthly
+13-06-2025 18:41:41: INFO: Clicked on Submit button
+13-06-2025 18:41:41: INFO: Test Assertion: Add Employee
+13-06-2025 18:41:41: INFO: Test Complete: test_add_new_employee_details
+13-06-2025 18:41:41: INFO: Starting Test: test_add_new_enrollment_add_family
+13-06-2025 18:41:47: INFO: Clicked on New hire enrollment button
+13-06-2025 18:41:48: INFO: Clicked on Get started button
+13-06-2025 18:41:50: INFO: Clicked on submit button
+13-06-2025 18:41:50: INFO: Clicked on New Family member button
+13-06-2025 18:41:50: INFO: First name entered: Sanvy
+13-06-2025 18:41:50: INFO: Middle name entered: Kumari
+13-06-2025 18:41:51: INFO: Last name entered: Woakes
+13-06-2025 18:41:51: INFO: SSN ID entered: 126695200
+13-06-2025 18:41:51: INFO: Birthdate entered: 05/01/1997
+13-06-2025 18:41:51: INFO: Gender entered: Female
+13-06-2025 18:41:51: INFO: Relationship entered: Spouse
+13-06-2025 18:41:51: INFO: Clicked on Submit button
+13-06-2025 18:41:52: INFO: Clicked on Submit button
+13-06-2025 18:41:57: INFO: Test Assertion: My Benefits - Testing Plansource Client Benefits
+13-06-2025 18:41:57: INFO: Test Complete: test_add_new_enrollment_add_family
+13-06-2025 18:42:00: INFO: Stopped application after the test session
