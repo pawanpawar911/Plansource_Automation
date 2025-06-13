@@ -1,4 +1,5 @@
 from selenium.webdriver.common.by import By
+from selenium.common.exceptions import TimeoutException, NoSuchElementException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.select import Select
@@ -90,19 +91,14 @@ class EmployeePage(BasePage):
     def add_payroll_schedule(self, payroll):
         self.select_element(self.locators.payroll_id, payroll)
         
-    # def add_pay_rate(self, ssn):
-    #     self.driver.find_element(*self.ssn).send_keys(ssn)
-        
     def save_button(self):
         wait = WebDriverWait(self.driver, 15)  # Wait up to 15 seconds
         wait.until(EC.element_to_be_clickable(self.locators.submit_button)).click()
-        #self.driver.find_element(*self.locators.submit_button).click()
 
     def add_new_hire_enrollment(self):
         wait = WebDriverWait(self.driver, 15)  # Wait up to 15 seconds
         wait.until(EC.element_to_be_clickable(self.locators.new_hire_enrollment)).click()
-        #self.driver.find_element(*self.locators.new_hire_enrollment).click()
-        
+
     def get_started_button(self):
         wait = WebDriverWait(self.driver, 15)  # Wait up to 15 seconds
         wait.until(EC.element_to_be_clickable(self.locators.get_started_page)).click()

@@ -44,15 +44,9 @@ class EmployeePageLocators(object):
     submit_button = (By.ID, "btn_save")
     
     new_hire_enrollment = (By.XPATH, "//a[normalize-space()='New Hire Enrollment']")
-    
-    get_started_page = (By.ID, "enrollmentStepOne")
-    
+    get_started_page = (By.XPATH, "//a[contains(text(), 'Get Started')]")
     add_family_member = (By.XPATH, "//a[normalize-space()='Add Family Member']")
-    
     submit_form = (By.ID , "submit_form")
-    
     relationship = (By.ID, "relationship")
-    
     lives_home = (By.ID, "lives_at_home")
-
     alert = (By.CLASS_NAME, "alert-message")
