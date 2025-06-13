@@ -34,6 +34,10 @@ This is a modular and scalable Python-based UI test automation framework designe
 │   ├── customLogger.py
 │   ├── locators.py
 │   └── read_properties.py
+|
+|__ README.md
+|
+|__ requirements.txt
 ```
 
 ---
