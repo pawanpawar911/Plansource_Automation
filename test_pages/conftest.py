@@ -1,10 +1,12 @@
 import pytest
+import os
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from utilities.customLogger import LogGenerate
 from selenium.webdriver.chrome.options import Options
 
+location = os.getcwd()
 
 @pytest.fixture(scope="session")
 def driver():
@@ -13,6 +15,8 @@ def driver():
     
     options = Options()
     prefs = {
+        "download.default_directory": location,
+        "plugins.always_open_pdf_externally": True,
         "credentials_enable_service": False,
         "profile.password_manager_enabled": False,
         "profile.password_manager_leak_detection":False

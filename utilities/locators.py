@@ -50,3 +50,16 @@ class EmployeePageLocators(object):
     relationship = (By.ID, "relationship")
     lives_home = (By.ID, "lives_at_home")
     alert = (By.CLASS_NAME, "alert-message")
+    
+    medical_plan = (By.XPATH, "//section[@aria-labelledby='Medical']//a[normalize-space()='Shop Plans']")
+    update_cart = (By.ID, "updateCartBtn")
+
+    radio_subscriber = (By.XPATH, "//span[normalize-space()='Yes']")
+    swipe_right_next = (By.ID, "next")
+    
+    menu_button = (By.ID, "toggleNavMenu")
+    admin = (By.XPATH, "//a[@data-submenu-key='admin']")
+    proceed_to_checkout = (By.XPATH, "//span[contains(text(), 'Proceed to Checkout')]") 
+    download = (By.XPATH, "//button[@class='btn btn-link shown-while-editing']") 
+    
+    checkout_button = (By.XPATH, "//button[@type='submit']//span[contains(text(),'Checkout')]")

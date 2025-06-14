@@ -3,6 +3,9 @@ import time
 import random
 import inspect
 import json
+import requests
+import os
+from selenium.common.exceptions import StaleElementReferenceException
 from selenium.webdriver.support.ui import WebDriverWait
 from base_pages.login_page import LoginPage
 from base_pages.employees_page import EmployeePage
@@ -43,11 +46,21 @@ def test_home_page(driver):
         logo = login_page.logo()
         assert logo.is_displayed(), logger.info(f"Logo is not present on the homepage")
         logger.info(f"Test Assertion: {driver.title} page logo is displayed.")
+        
     except AssertionError as e:
-        logger.info(f"Assertion failed: {e}") 
+        login_page.save_screenshot("home_page_failure")
+        logger.error(f"Assertion failed: {e}")
+        raise
 
     except AttributeError as e:
-        logger.info(f"AttributeError failed: {e}")
+        login_page.save_screenshot("home_page_failure")
+        logger.error(f"AttributeError: {e}")
+        raise
+
+    except Exception as e:
+        login_page.save_screenshot("home_page_failure")
+        logger.error(f"Unexpected error: {e}")
+        raise
         
 def test_login_window_valid_cred(driver):
     logger = LogGenerate.logger_file()
@@ -78,10 +91,19 @@ def test_login_window_valid_cred(driver):
         logger.info(f"Test Assertion: {driver.title}")
         
     except AssertionError as e:
-        logger.info(f"Assertion failed: {e}")
-    
+        login_page.save_screenshot("login_page_failure")
+        logger.error(f"Assertion failed: {e}")
+        raise
+
     except AttributeError as e:
-        logger.info(f"AttributeError failed: {e}")
+        login_page.save_screenshot("login_page_failure")
+        logger.error(f"AttributeError: {e}")
+        raise
+
+    except Exception as e:
+        login_page.save_screenshot("login_page_failure")
+        logger.error(f"Unexpected error: {e}")
+        raise
         
         
 def test_add_new_employee(driver):
@@ -100,17 +122,23 @@ def test_add_new_employee(driver):
             "PlanSource ben admin"
         ]
 
-        assert driver.title in expected_titles, logger.info(f"Expected one of {expected_titles}, but got '{driver.title}'")
+        assert driver.title in expected_titles, f"Expected one of {expected_titles}, but got '{driver.title}'"
         logger.info(f"Test Assertion: {driver.title}")
 
     except AssertionError as e:
-        logger.info(f"Assertion failed: {e}") 
-    
+        employee_page.save_screenshot("new_employee_failure")
+        logger.error(f"Assertion failed: {e}")
+        raise
+
     except AttributeError as e:
-        logger.info(f"AttributeError failed: {e}")
-        
+        employee_page.save_screenshot("new_employee_failure")
+        logger.error(f"AttributeError: {e}")
+        raise
+
     except Exception as e:
-        logger.info(f"General error failed: {e}")
+        employee_page.save_screenshot("new_employee_failuress")
+        logger.error(f"Unexpected error: {e}")
+        raise
 
 def test_add_new_employee_details(driver):
     logger = LogGenerate.logger_file()
@@ -200,19 +228,23 @@ def test_add_new_employee_details(driver):
             "Dashboard"
         ]
 
-        assert driver.title in expected_titles, logger.info(f"Expected one of {expected_titles}, but got '{driver.title}'")
+        assert driver.title in expected_titles, f"Expected one of {expected_titles}, but got '{driver.title}'"
         logger.info(f"Test Assertion: {driver.title}")
         
     except AssertionError as e:
+        employee_page.save_screenshot("add_new_employee_failure")
         logger.info(f"Assertion failed: {e}") 
     
     except AttributeError as e:
+        employee_page.save_screenshot("add_new_employee_failure")
         logger.info(f"AttributeError failed: {e}")  
         
     except Exception as e:
-        logger.info(f"General error failed: {e}")   
+        employee_page.save_screenshot("add_new_employee_failure")
+        logger.error(f"Unexpected error: {e}")
+        raise  
     
-def test_add_new_enrollment_add_family(driver):
+def test_benefits_and_family(driver):
     logger = LogGenerate.logger_file()
     logger.info(f"Starting Test: {inspect.currentframe().f_code.co_name}")
 
@@ -254,12 +286,15 @@ def test_add_new_enrollment_add_family(driver):
         logger.info(f"Relationship entered: {user_data["relationship"]}")
         
         employee_page.submit_button()
-        logger.info(f"Clicked on Submit button")
+        logger.info(f"Clicked on Next: Review My Family button")
         
-        employee_page.submit_button()
-        logger.info(f"Clicked on Submit button")
-        
-        time.sleep(5)
+        try: 
+            employee_page.submit_button()
+            logger.info(f"Clicked on Next: Shop for benefits button")
+            
+        except StaleElementReferenceException:
+            employee_page.submit_button()
+            logger.info(f"Clicked on Next: Shop for benefits button")
 
         expected_titles = [
             "Add Employee",
@@ -268,14 +303,153 @@ def test_add_new_enrollment_add_family(driver):
             "Dashboard"
         ]
 
-        assert driver.title in expected_titles, logger.info(f"Expected one of {expected_titles}, but got '{driver.title}'")
+        assert driver.title in expected_titles, f"Expected one of {expected_titles}, but got '{driver.title}'"
         logger.info(f"Test Assertion: {driver.title}")
         
     except AssertionError as e:
+        employee_page.save_screenshot("benefits_failure")
         logger.info(f"Assertion failed: {e}")
     
     except AttributeError as e:
+        employee_page.save_screenshot("benefits_failure")
         logger.info(f"AttributeError failed: {e}")
     
     except Exception as e:
+        employee_page.save_screenshot("benefits_failure")
+        logger.error(f"Unexpected error: {e}")
+        raise
+        
+        
+def test_add_medical_plan(driver):
+    logger = LogGenerate.logger_file()
+    logger.info(f"Starting Test: {inspect.currentframe().f_code.co_name}")
+
+    try:
+        employee_page = EmployeePage(driver)
+
+        employee_page.add_medical_plan()
+        logger.info(f"Clicked Add medical plan button")
+
+        employee_page.update_cart()
+        logger.info(f"Clicked on update cart button")
+        
+        employee_page.radio_subscriber_button()
+        logger.info(f"Clicked on radio subscriber button")
+        
+        employee_page.swipe_right_button()
+        logger.info(f"Clicked on radio subscriber button")
+        
+        employee_page.submit_button()
+        logger.info(f"Clicked on save button")
+
+    except AssertionError as e:
+        employee_page.save_screenshot("medical_plan_failure")
+        logger.error(f"Assertion failed: {e}")
+        raise
+
+    except AttributeError as e:
+        employee_page.save_screenshot("medical_plan_failure")
+        logger.error(f"AttributeError: {e}")
+        raise
+
+    except Exception as e:
+        employee_page.save_screenshot("medical_plan_failure")
+        logger.error(f"Unexpected error: {e}")
+        raise
+        
+        
+def test_add_dental_plan(driver):
+    logger = LogGenerate.logger_file()
+    logger.info(f"Starting Test: {inspect.currentframe().f_code.co_name}")
+    
+    employee_page = EmployeePage(driver) 
+    
+    apiurl = ReadConfig.get_api_url()
+    referer = ReadConfig.get_referer()
+    session_id_value = ReadConfig.get_session_id()
+    
+    cookie_dict = {'_session_id': session_id_value}
+    headers = {
+        'Referer': referer,
+        'Content-Type': 'application/json'
+    }
+    
+    with open("api_json_body.json", "r") as file:
+        json_body = json.load(file)
+    
+    try:
+        # PUT Request
+        response = requests.put(
+            apiurl,
+            cookies=cookie_dict,
+            headers=headers,
+            json=json_body
+        )
+
+        if response.status_code == 200:
+            logger.info(f"Status Code: {response.status_code}")
+        else:
+            logger.error(f"Status Code Mismatched: {response.status_code}")
+            raise AssertionError(f"Expected 200, but got {response.status_code}")
+        
+        if 'Content-Type' in response.headers:
+            content_type = response.headers['Content-Type']
+            logger.info(f"Received Content-Type: {content_type}")
+            assert content_type == "application/json; charset=utf-8", f"Unexpected Content-Type: {content_type}"
+        else:
+            raise AssertionError("Content-Type header not found in response")
+        time.sleep(2)
+    except AssertionError as e:
+        employee_page.save_screenshot("api_failure")
+        logger.info(f"Assertion failed: {e}")
+        raise
+    
+    except AttributeError as e:
+        employee_page.save_screenshot("api_failure")
+        logger.info(f"AttributeError failed: {e}")
+        raise
+    
+    except Exception as e:
+        employee_page.save_screenshot("api_failure")
         logger.info(f"General error failed: {e}")
+        raise
+    
+def test_admin_proceed_and_download(driver):
+    logger = LogGenerate.logger_file()
+    logger.info(f"Starting Test: {inspect.currentframe().f_code.co_name}")
+
+    try:
+        employee_page = EmployeePage(driver)
+        
+        employee_page.menu_button()
+        logger.info(f"Clicked on Menu button")
+
+        employee_page.admin_tab()
+        logger.info(f"Clicked on Admin tab button")
+        
+        employee_page.proceed_to_checkout_tab()
+        logger.info(f"Clicked on Proceed to checkout button")
+        
+        employee_page.checkout_button()
+        logger.info(f"Clicked on checkout button")
+        
+        employee_page.download_button()
+        logger.info(f"Clicked on Download button")
+        logger.info(f"File Downloaded at : {os.getcwd()}")
+        
+        time.sleep(5)
+
+    except AssertionError as e:
+        employee_page.save_screenshot("admin_download_failure")
+        logger.error(f"Assertion failed: {e}")
+        raise
+
+    except AttributeError as e:
+        employee_page.save_screenshot("admin_download_failure")
+        logger.error(f"AttributeError: {e}")
+        raise
+
+    except Exception as e:
+        employee_page.save_screenshot("admin_download_failure")
+        logger.error(f"Unexpected error: {e}")
+        raise
