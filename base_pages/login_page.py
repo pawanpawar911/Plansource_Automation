@@ -8,11 +8,10 @@ from utilities.locators import LoginPageLocators
 
 class LoginPage(BasePage):
     def __init__(self, driver):
+        super().__init__(driver)  # inherited base class attributes and methods
         
         self.driver = driver
         self.locators = LoginPageLocators
-        
-        super().__init__(driver)  # inherited base class attributes and methods
         
     def open_page(self, url):
         self.driver.get(url)

@@ -453,17 +453,10 @@ def test_admin_proceed_and_download(driver):
         employee_page.checkout_button()
         logger.info(f"Clicked on checkout button")
         
-        try: 
-            employee_page.download_button()
-            logger.info(f"Clicked on Download button")
-            logger.info(f"File Downloaded at : {os.getcwd()}")
-            
-        except StaleElementReferenceException:
-            employee_page.download_button()
-            logger.info(f"Clicked on Download button")
-            logger.info(f"File Downloaded at : {os.getcwd()}")      
-
-        time.sleep(5)
+        employee_page.download_button()
+        logger.info(f"Clicked on Download button")
+        logger.info(f"File Downloaded at : {os.getcwd()}")
+        time.sleep(4)
 
     except AssertionError as e:
         employee_page.save_screenshot("admin_download_failure")

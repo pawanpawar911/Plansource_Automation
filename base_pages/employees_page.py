@@ -10,6 +10,8 @@ import time
 
 class EmployeePage(BasePage):
     def __init__(self, driver):
+        super().__init__(driver)  # inherited base class attributes and methods
+        
         self.driver = driver
         self.locators = EmployeePageLocators
         
@@ -21,34 +23,34 @@ class EmployeePage(BasePage):
         self.find_element(*self.locators.password_textbox).send_keys(password)
         
     def add_firstname(self, firstname):
-        self.driver.find_element(*self.locators.firstName).send_keys(firstname)
+        self.find_element(*self.locators.firstName).send_keys(firstname)
         
     def add_middlename(self, middlename):
-        self.driver.find_element(*self.locators.middleName).send_keys(middlename)
+        self.find_element(*self.locators.middleName).send_keys(middlename)
         
     def add_lastname(self, lastname):
-        self.driver.find_element(*self.locators.lastName).send_keys(lastname)
+        self.find_element(*self.locators.lastName).send_keys(lastname)
         
     def ssn_id(self, ssn):
-        self.driver.find_element(*self.locators.ssn).send_keys(ssn)
+        self.find_element(*self.locators.ssn).send_keys(ssn)
         
     def add_address(self, address_1):
-        self.driver.find_element(*self.locators.add1).send_keys(address_1)
+        self.find_element(*self.locators.add1).send_keys(address_1)
         
     def add_city(self, city_name):
-        self.driver.find_element(*self.locators.city).send_keys(city_name)
+        self.find_element(*self.locators.city).send_keys(city_name)
         
     def add_state(self, state):
-        self.driver.find_element(*self.locators.state).send_keys(state)
+        self.find_element(*self.locators.state).send_keys(state)
         
     def add_zipcode(self, zip):
-        self.driver.find_element(*self.locators.zipcode).send_keys(zip)
+        self.find_element(*self.locators.zipcode).send_keys(zip)
         
     def add_country(self, country):
-        self.driver.find_element(*self.locators.country).send_keys(country)
+        self.find_element(*self.locators.country).send_keys(country)
         
     def add_email(self, email):
-        self.driver.find_element(*self.locators.email).send_keys(email)
+        self.find_element(*self.locators.email).send_keys(email)
         
     def preferred_communication(self, mode):
         self.select_element(self.locators.preferred_comm, mode)       
@@ -75,16 +77,16 @@ class EmployeePage(BasePage):
         self.select_element(self.locators.location, emp_level)
         
     def add_current_salary(self, current_salary):
-        self.driver.find_element(*self.locators.current_salary).send_keys(current_salary)
+        self.find_element(*self.locators.current_salary).send_keys(current_salary)
         
     def add_benefit_salary(self, benefit_salary):
-        self.driver.find_element(*self.locators.benefit_salary).send_keys(benefit_salary)
+        self.find_element(*self.locators.benefit_salary).send_keys(benefit_salary)
         
     def add_plan_year(self, ssn):
-        self.driver.find_element(*self.ssn).send_keys(ssn)
+        self.find_element(*self.ssn).send_keys(ssn)
         
     def add_pay_rate(self, pay_rate):
-        ele = self.driver.find_element(*self.locators.pay_rate)
+        ele = self.find_element(*self.locators.pay_rate)
         ele.clear()
         ele.send_keys(pay_rate)
         
@@ -108,19 +110,19 @@ class EmployeePage(BasePage):
         wait.until(EC.element_to_be_clickable(self.locators.add_family_member)).click()
         
     def family_first_name(self, firstname):
-        self.driver.find_element(*self.locators.firstName).send_keys(firstname)
+        self.find_element(*self.locators.firstName).send_keys(firstname)
         
     def family_middle_name(self, middlename):
-        self.driver.find_element(*self.locators.middleName).send_keys(middlename)
+        self.find_element(*self.locators.middleName).send_keys(middlename)
         
     def family_last_name(self, lastname):
-        self.driver.find_element(*self.locators.lastName).send_keys(lastname)
+        self.find_element(*self.locators.lastName).send_keys(lastname)
         
     def ssn_id_1(self, ssn):
-        self.driver.find_element(*self.locators.ssn_id).send_keys(ssn)
+        self.find_element(*self.locators.ssn_id).send_keys(ssn)
         
     def add_relationship(self, relation):
-        self.driver.find_element(*self.locators.relationship).send_keys(relation)
+        self.find_element(*self.locators.relationship).send_keys(relation)
         
     def submit_button(self):
         wait = WebDriverWait(self.driver, 15)  # Wait up to 15 seconds
