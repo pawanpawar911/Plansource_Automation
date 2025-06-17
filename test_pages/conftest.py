@@ -23,11 +23,9 @@ def driver():
     }
     options.add_experimental_option("prefs", prefs)
     options.add_argument('--no-sandbox')  # # Bypass OS security model
-    options.add_argument('disable-infobars')
     options.add_argument("--disable-extensions")
     options.add_argument("--disable-notifications")
     options.add_argument("--start-fullscreen")
-    options.add_argument('--disable-gpu')
     
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
     driver.maximize_window()
