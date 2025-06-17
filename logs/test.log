@@ -1,83 +1,84 @@
-15-06-2025 04:06:37: INFO: Starting application for the test session
-15-06-2025 04:06:37: INFO: ====== WebDriver manager ======
-15-06-2025 04:06:38: INFO: Get LATEST chromedriver version for google-chrome
-15-06-2025 04:06:38: INFO: Get LATEST chromedriver version for google-chrome
-15-06-2025 04:06:38: INFO: Driver [C:\Users\Pawan.Pawar\.wdm\drivers\chromedriver\win64\137.0.7151.70\chromedriver-win32/chromedriver.exe] found in cache
-15-06-2025 04:06:40: INFO: Starting Test: test_home_page
-15-06-2025 04:06:40: INFO: Opening URL: https://partner-dev-benefits.plansource.com
-15-06-2025 04:06:43: INFO: Verifying PlanSource Login page
-15-06-2025 04:06:43: INFO: Test Assertion: PlanSource Login page logo is displayed.
-15-06-2025 04:06:43: INFO: Test Complete: test_home_page
-15-06-2025 04:06:43: INFO: Starting Test: test_login_window_valid_cred
-15-06-2025 04:06:43: INFO: Username entered: plansource_test_admin
-15-06-2025 04:06:43: INFO: Password entered: password123
-15-06-2025 04:06:45: INFO: Clicked on Login button
-15-06-2025 04:06:45: INFO: Test Assertion: Dashboard
-15-06-2025 04:06:45: INFO: Test Complete: test_login_window_valid_cred
-15-06-2025 04:06:45: INFO: Starting Test: test_add_new_employee
-15-06-2025 04:06:47: INFO: Clicked on Add New Employee
-15-06-2025 04:06:47: INFO: Test Assertion: Add Employee
-15-06-2025 04:06:47: INFO: Test Complete: test_add_new_employee
-15-06-2025 04:06:47: INFO: Starting Test: test_add_new_employee_details
-15-06-2025 04:06:47: INFO: Password entered: password123
-15-06-2025 04:06:47: INFO: First Name entered: Rover
-15-06-2025 04:06:47: INFO: Middle Name entered: Nana
-15-06-2025 04:06:47: INFO: Last Name entered: Anderson
-15-06-2025 04:06:47: INFO: SSN entered: 311185232
-15-06-2025 04:06:47: INFO: Address entered: 62, WayStreet
-15-06-2025 04:06:47: INFO: City entered: Birmingham
-15-06-2025 04:06:47: INFO: State entered: Alabama
-15-06-2025 04:06:47: INFO: Zipcode entered: 35001
-15-06-2025 04:06:47: INFO: Country entered: Colombia
-15-06-2025 04:06:47: INFO: Email entered: example123@gmail.com
-15-06-2025 04:06:47: INFO: Communication mode entered: Email
-15-06-2025 04:06:47: INFO: Birthdate entered: 05/01/1997
-15-06-2025 04:06:48: INFO: Gender entered: Male
-15-06-2025 04:06:48: INFO: marital Status entered: Married
-15-06-2025 04:06:48: INFO: Hire date entered: 06/11/2025
-15-06-2025 04:06:48: INFO: Eligibility date entered: 06/11/2025
-15-06-2025 04:06:48: INFO: Employment level entered: F
-15-06-2025 04:06:48: INFO: Location entered: SCA
-15-06-2025 04:06:48: INFO: Current salary entered: 450
-15-06-2025 04:06:48: INFO: Benefit salary entered: 800
-15-06-2025 04:06:48: INFO: Pay rate entered: 125000
-15-06-2025 04:06:48: INFO: Payroll entered: Semi-monthly
-15-06-2025 04:06:48: INFO: Clicked on Submit button
-15-06-2025 04:06:48: INFO: Test Assertion: Add Employee
-15-06-2025 04:06:48: INFO: Test Complete: test_add_new_employee_details
-15-06-2025 04:06:48: INFO: Starting Test: test_benefits_and_family
-15-06-2025 04:06:55: INFO: Clicked on New hire enrollment button
-15-06-2025 04:06:56: INFO: Clicked on Get started button
-15-06-2025 04:06:58: INFO: Clicked on submit button
-15-06-2025 04:06:58: INFO: Clicked on New Family member button
-15-06-2025 04:06:58: INFO: First name entered: Sanvy
-15-06-2025 04:06:59: INFO: Middle name entered: K
-15-06-2025 04:06:59: INFO: Last name entered: Anderson
-15-06-2025 04:06:59: INFO: SSN ID entered: 174407287
-15-06-2025 04:06:59: INFO: Birthdate entered: 05/01/1997
-15-06-2025 04:06:59: INFO: Gender entered: Female
-15-06-2025 04:06:59: INFO: Relationship entered: Spouse
-15-06-2025 04:06:59: INFO: Clicked on Next: Review My Family button
-15-06-2025 04:07:00: INFO: Clicked on Next: Shop for benefits button
-15-06-2025 04:07:00: INFO: Test Assertion: My Benefits - Testing Plansource Client Benefits
-15-06-2025 04:07:00: INFO: Test Complete: test_benefits_and_family
-15-06-2025 04:07:00: INFO: Starting Test: test_add_medical_plan
-15-06-2025 04:07:00: INFO: Clicked Add medical plan button
-15-06-2025 04:07:05: INFO: Clicked on update cart button
-15-06-2025 04:07:09: INFO: Clicked on radio subscriber button
-15-06-2025 04:07:09: INFO: Clicked on radio subscriber button
-15-06-2025 04:07:10: INFO: Clicked on save button
-15-06-2025 04:07:10: INFO: Test Complete: test_add_medical_plan
-15-06-2025 04:07:10: INFO: Starting Test: test_add_dental_plan
-15-06-2025 04:07:12: INFO: Status Code: 200
-15-06-2025 04:07:12: INFO: Received Content-Type: application/json; charset=utf-8
-15-06-2025 04:07:14: INFO: Test Complete: test_add_dental_plan
-15-06-2025 04:07:14: INFO: Starting Test: test_admin_proceed_and_download
-15-06-2025 04:07:14: INFO: Clicked on Menu button
-15-06-2025 04:07:14: INFO: Clicked on Admin tab button
-15-06-2025 04:07:14: INFO: Clicked on Proceed to checkout button
-15-06-2025 04:07:14: INFO: Clicked on checkout button
-15-06-2025 04:07:16: INFO: Clicked on Download button
-15-06-2025 04:07:16: INFO: File Downloaded at : E:\Example\Notes\PlanSource_Test_Automation
-15-06-2025 04:07:21: INFO: Test Complete: test_admin_proceed_and_download
-15-06-2025 04:07:24: INFO: Stopped application after the test session
+17-06-2025 18:44:06: INFO: Starting application for the test session
+17-06-2025 18:44:06: INFO: ====== WebDriver manager ======
+17-06-2025 18:44:08: INFO: Get LATEST chromedriver version for google-chrome
+17-06-2025 18:44:08: INFO: Get LATEST chromedriver version for google-chrome
+17-06-2025 18:44:08: INFO: Driver [C:\Users\Pawan.Pawar\.wdm\drivers\chromedriver\win64\137.0.7151.70\chromedriver-win32/chromedriver.exe] found in cache
+17-06-2025 18:44:10: INFO: Starting Test: test_home_page
+17-06-2025 18:44:10: INFO: Opening URL: https://partner-dev-benefits.plansource.com
+17-06-2025 18:44:13: INFO: Verifying PlanSource Login page
+17-06-2025 18:44:13: INFO: Test Assertion: PlanSource Login page logo is displayed.
+17-06-2025 18:44:13: INFO: Test Complete: test_home_page
+17-06-2025 18:44:13: INFO: Starting Test: test_login_window_valid_cred
+17-06-2025 18:44:13: INFO: Username entered: plansource_test_admin
+17-06-2025 18:44:13: INFO: Password entered: password123
+17-06-2025 18:44:15: INFO: Clicked on Login button
+17-06-2025 18:44:15: INFO: Test Assertion: Dashboard
+17-06-2025 18:44:15: INFO: Test Complete: test_login_window_valid_cred
+17-06-2025 18:44:15: INFO: Starting Test: test_add_new_employee
+17-06-2025 18:44:16: INFO: Clicked on Add New Employee
+17-06-2025 18:44:16: INFO: Test Assertion: Add Employee
+17-06-2025 18:44:16: INFO: Test Complete: test_add_new_employee
+17-06-2025 18:44:16: INFO: Starting Test: test_add_new_employee_details
+17-06-2025 18:44:16: INFO: Password entered: password123
+17-06-2025 18:44:16: INFO: First Name entered: Rover
+17-06-2025 18:44:16: INFO: Middle Name entered: Nana
+17-06-2025 18:44:16: INFO: Last Name entered: Anderson
+17-06-2025 18:44:16: INFO: SSN entered: 686663214
+17-06-2025 18:44:17: INFO: Address entered: 62, WayStreet
+17-06-2025 18:44:17: INFO: City entered: Birmingham
+17-06-2025 18:44:17: INFO: State entered: Alabama
+17-06-2025 18:44:17: INFO: Zipcode entered: 35001
+17-06-2025 18:44:17: INFO: Country entered: Colombia
+17-06-2025 18:44:17: INFO: Email entered: example123@gmail.com
+17-06-2025 18:44:17: INFO: Communication mode entered: Email
+17-06-2025 18:44:17: INFO: Birthdate entered: 05/01/1997
+17-06-2025 18:44:17: INFO: Gender entered: Male
+17-06-2025 18:44:17: INFO: marital Status entered: Married
+17-06-2025 18:44:17: INFO: Hire date entered: 06/11/2025
+17-06-2025 18:44:17: INFO: Eligibility date entered: 06/11/2025
+17-06-2025 18:44:17: INFO: Employment level entered: F
+17-06-2025 18:44:17: INFO: Location entered: SCA
+17-06-2025 18:44:17: INFO: Current salary entered: 450
+17-06-2025 18:44:18: INFO: Benefit salary entered: 800
+17-06-2025 18:44:18: INFO: Pay rate entered: 125000
+17-06-2025 18:44:18: INFO: Payroll entered: Semi-monthly
+17-06-2025 18:44:18: INFO: Clicked on Submit button
+17-06-2025 18:44:18: INFO: Test Assertion: Add Employee
+17-06-2025 18:44:18: INFO: Test Complete: test_add_new_employee_details
+17-06-2025 18:44:18: INFO: Starting Test: test_benefits_and_family
+17-06-2025 18:44:23: INFO: Clicked on New hire enrollment button
+17-06-2025 18:44:25: INFO: Clicked on Get started button
+17-06-2025 18:44:27: INFO: Clicked on submit button
+17-06-2025 18:44:27: INFO: Clicked on New Family member button
+17-06-2025 18:44:27: INFO: First name entered: Sanvy
+17-06-2025 18:44:27: INFO: Middle name entered: K
+17-06-2025 18:44:27: INFO: Last name entered: Anderson
+17-06-2025 18:44:27: INFO: SSN ID entered: 799246103
+17-06-2025 18:44:28: INFO: Birthdate entered: 05/01/1997
+17-06-2025 18:44:28: INFO: Gender entered: Female
+17-06-2025 18:44:28: INFO: Relationship entered: Spouse
+17-06-2025 18:44:28: INFO: Clicked on Next: Review My Family button
+17-06-2025 18:44:29: INFO: Clicked on Next: Shop for benefits button
+17-06-2025 18:44:29: INFO: Test Assertion: My Benefits - Testing Plansource Client Benefits
+17-06-2025 18:44:29: INFO: Test Complete: test_benefits_and_family
+17-06-2025 18:44:29: INFO: Starting Test: test_add_medical_plan
+17-06-2025 18:44:29: INFO: Clicked Add medical plan button
+17-06-2025 18:44:34: INFO: Clicked on update cart button
+17-06-2025 18:44:38: INFO: Clicked on radio subscriber button
+17-06-2025 18:44:38: INFO: Clicked on radio subscriber button
+17-06-2025 18:44:38: INFO: Clicked on save button
+17-06-2025 18:44:38: INFO: Test Complete: test_add_medical_plan
+17-06-2025 18:44:38: INFO: Starting Test: test_add_dental_plan
+17-06-2025 18:44:38: INFO: session id value : 04a52ac9d4a531df4cd0d8161c61ace8
+17-06-2025 18:44:40: INFO: Status Code: 200
+17-06-2025 18:44:40: INFO: Received Content-Type: application/json; charset=utf-8
+17-06-2025 18:44:42: INFO: Test Complete: test_add_dental_plan
+17-06-2025 18:44:42: INFO: Starting Test: test_admin_proceed_and_download
+17-06-2025 18:44:43: INFO: Clicked on Menu button
+17-06-2025 18:44:43: INFO: Clicked on Admin tab button
+17-06-2025 18:44:43: INFO: Clicked on Proceed to checkout button
+17-06-2025 18:44:43: INFO: Clicked on checkout button
+17-06-2025 18:44:45: INFO: Clicked on Download button
+17-06-2025 18:44:45: INFO: File Downloaded at : E:\Example\Notes\PlanSource_Test_Automation
+17-06-2025 18:44:47: INFO: Test Complete: test_admin_proceed_and_download
+17-06-2025 18:44:50: INFO: Stopped application after the test session

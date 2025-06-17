@@ -1,4 +1,5 @@
 import pytest
+import allure
 import time
 import random
 import inspect
@@ -28,7 +29,10 @@ def setup(request):
         logger.info(f"Test Complete: {request.node.name}")
 
     request.addfinalizer(finalize)
-
+    
+    
+@allure.title("Login Page Logo Test")
+@allure.description("This is test of login page logo")
 def test_home_page(driver):
     logger = LogGenerate.logger_file()
     logger.info(f"Starting Test: {inspect.currentframe().f_code.co_name}")
@@ -61,7 +65,9 @@ def test_home_page(driver):
         login_page.save_screenshot("home_page_failure")
         logger.error(f"Unexpected error: {e}")
         raise
-        
+    
+@allure.title("Login Page Test")
+@allure.description("This is test of login page")        
 def test_login_window_valid_cred(driver):
     logger = LogGenerate.logger_file()
     logger.info(f"Starting Test: {inspect.currentframe().f_code.co_name}")
@@ -82,12 +88,13 @@ def test_login_window_valid_cred(driver):
 
         expected_titles = [
             "Add Employee",
+            "PlanSource Login",
             "New Dependent - Testing Plansource Client Benefits",
             "Dashboard",
             "PlanSource ben admin"
         ]
 
-        assert driver.title in expected_titles, logger.info(f"Expected one of {expected_titles}, but got '{driver.title}'")
+        assert driver.title in expected_titles, f"Expected one of {expected_titles}, but got '{driver.title}'"
         logger.info(f"Test Assertion: {driver.title}")
         
     except AssertionError as e:
@@ -105,7 +112,8 @@ def test_login_window_valid_cred(driver):
         logger.error(f"Unexpected error: {e}")
         raise
         
-        
+@allure.title("Dashboard Page Test")
+@allure.description("This is test of dashboard page-add new employee")        
 def test_add_new_employee(driver):
     logger = LogGenerate.logger_file()
     logger.info(f"Starting Test: {inspect.currentframe().f_code.co_name}")
@@ -139,7 +147,9 @@ def test_add_new_employee(driver):
         employee_page.save_screenshot("new_employee_failuress")
         logger.error(f"Unexpected error: {e}")
         raise
-
+    
+@allure.title("Add New Employee Test")
+@allure.description("This is test of add new employee deatils")   
 def test_add_new_employee_details(driver):
     logger = LogGenerate.logger_file()
     logger.info(f"Starting Test: {inspect.currentframe().f_code.co_name}")
@@ -243,7 +253,9 @@ def test_add_new_employee_details(driver):
         employee_page.save_screenshot("add_new_employee_failure")
         logger.error(f"Unexpected error: {e}")
         raise  
-    
+
+@allure.title("Benefits and Family Page Test")
+@allure.description("This is test of benefits and family page")       
 def test_benefits_and_family(driver):
     logger = LogGenerate.logger_file()
     logger.info(f"Starting Test: {inspect.currentframe().f_code.co_name}")
@@ -294,6 +306,7 @@ def test_benefits_and_family(driver):
             
         except StaleElementReferenceException:
             employee_page.submit_button()
+            logger.warning("StaleElementReferenceException caught, retrying")
             logger.info(f"Clicked on Next: Shop for benefits button")
 
         expected_titles = [
@@ -319,7 +332,8 @@ def test_benefits_and_family(driver):
         logger.error(f"Unexpected error: {e}")
         raise
         
-        
+@allure.title("Add Medical Plan Test")
+@allure.description("This is test of add medical plan")           
 def test_add_medical_plan(driver):
     logger = LogGenerate.logger_file()
     logger.info(f"Starting Test: {inspect.currentframe().f_code.co_name}")
@@ -356,17 +370,21 @@ def test_add_medical_plan(driver):
         employee_page.save_screenshot("medical_plan_failure")
         logger.error(f"Unexpected error: {e}")
         raise
-        
-        
+
+@allure.title("Add Dental Plan API Test")
+@allure.description("This is test of add dental plan using put requests api")         
 def test_add_dental_plan(driver):
     logger = LogGenerate.logger_file()
     logger.info(f"Starting Test: {inspect.currentframe().f_code.co_name}")
     
     employee_page = EmployeePage(driver) 
-    
+
     apiurl = ReadConfig.get_api_url()
     referer = ReadConfig.get_referer()
-    session_id_value = ReadConfig.get_session_id()
+
+    session_id_value = driver.get_cookie("_session_id")["value"]
+    
+    logger.info(f"session id value : {session_id_value}")
     
     cookie_dict = {'_session_id': session_id_value}
     headers = {
@@ -414,6 +432,8 @@ def test_add_dental_plan(driver):
         logger.info(f"General error failed: {e}")
         raise
     
+@allure.title("Admin Tab and Download Test")
+@allure.description("This is test of admin tab>proceed to checkout and download button")     
 def test_admin_proceed_and_download(driver):
     logger = LogGenerate.logger_file()
     logger.info(f"Starting Test: {inspect.currentframe().f_code.co_name}")
@@ -436,8 +456,7 @@ def test_admin_proceed_and_download(driver):
         employee_page.download_button()
         logger.info(f"Clicked on Download button")
         logger.info(f"File Downloaded at : {os.getcwd()}")
-        
-        time.sleep(5)
+        time.sleep(2)
 
     except AssertionError as e:
         employee_page.save_screenshot("admin_download_failure")
