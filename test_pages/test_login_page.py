@@ -463,7 +463,7 @@ def test_admin_proceed_and_download(driver):
             logger.info(f"Clicked on Download button")
             logger.info(f"File Downloaded at : {os.getcwd()}")      
 
-        time.sleep(4)
+        time.sleep(5)
 
     except AssertionError as e:
         employee_page.save_screenshot("admin_download_failure")
