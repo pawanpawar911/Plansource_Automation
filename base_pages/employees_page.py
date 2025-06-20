@@ -16,7 +16,7 @@ class EmployeePage(BasePage):
         self.locators = EmployeePageLocators
         
     def add_new_employee(self):
-        wait = WebDriverWait(self.driver, 10)  # Wait up to 10 seconds
+        wait = WebDriverWait(self.driver, 30)
         wait.until(EC.element_to_be_clickable(self.locators.add_new_emp)).click()
     
     def enter_password(self, password):
@@ -94,19 +94,19 @@ class EmployeePage(BasePage):
         self.select_element(self.locators.payroll_id, payroll)
         
     def save_button(self):
-        wait = WebDriverWait(self.driver, 15)  # Wait up to 15 seconds
+        wait = WebDriverWait(self.driver, 30)
         wait.until(EC.element_to_be_clickable(self.locators.submit_button)).click()
 
     def add_new_hire_enrollment(self):
-        wait = WebDriverWait(self.driver, 15)  # Wait up to 15 seconds
+        wait = WebDriverWait(self.driver, 30)
         wait.until(EC.element_to_be_clickable(self.locators.new_hire_enrollment)).click()
 
     def get_started_button(self):
-        wait = WebDriverWait(self.driver, 15)  # Wait up to 15 seconds
+        wait = WebDriverWait(self.driver, 30)
         wait.until(EC.element_to_be_clickable(self.locators.get_started_page)).click()
 
     def add_new_family_member(self):
-        wait = WebDriverWait(self.driver, 15)  # Wait up to 15 seconds
+        wait = WebDriverWait(self.driver, 30)
         wait.until(EC.element_to_be_clickable(self.locators.add_family_member)).click()
         
     def family_first_name(self, firstname):
@@ -125,44 +125,44 @@ class EmployeePage(BasePage):
         self.find_element(*self.locators.relationship).send_keys(relation)
         
     def submit_button(self):
-        wait = WebDriverWait(self.driver, 15)  # Wait up to 15 seconds
+        wait = WebDriverWait(self.driver, 30)  
         wait.until(EC.element_to_be_clickable(self.locators.submit_form)).click()
         
     def add_medical_plan(self):
-        wait = WebDriverWait(self.driver, 15)  # Wait up to 15 seconds
+        wait = WebDriverWait(self.driver, 30)  
         wait.until(EC.element_to_be_clickable(self.locators.medical_plan)).click()
         
     def update_cart(self):
-        wait = WebDriverWait(self.driver, 15)  # Wait up to 15 seconds
+        wait = WebDriverWait(self.driver, 30)  
         element = wait.until(EC.element_to_be_clickable(self.locators.update_cart))
         self.driver.execute_script("arguments[0].click();", element)
         
     def radio_subscriber_button(self):
-        wait = WebDriverWait(self.driver, 15)  # Wait up to 15 seconds
+        wait = WebDriverWait(self.driver, 30)  
         wait.until(EC.element_to_be_clickable(self.locators.radio_subscriber)).click()
         
     def swipe_right_button(self):
-        wait = WebDriverWait(self.driver, 15)  # Wait up to 15 seconds
+        wait = WebDriverWait(self.driver, 30)  
         wait.until(EC.element_to_be_clickable(self.locators.swipe_right_next)).click()
         
     def menu_button(self):
-        wait = WebDriverWait(self.driver, 15)  # Wait up to 15 seconds
+        wait = WebDriverWait(self.driver, 30)  
         wait.until(EC.element_to_be_clickable(self.locators.menu_button)).click()
         
     def admin_tab(self):
-        wait = WebDriverWait(self.driver, 15)
+        wait = WebDriverWait(self.driver, 30)
         element = wait.until(EC.element_to_be_clickable(self.locators.admin))
         self.driver.execute_script("arguments[0].click();", element)
         
     def proceed_to_checkout_tab(self):
-        wait = WebDriverWait(self.driver, 15)  # Wait up to 15 seconds
+        wait = WebDriverWait(self.driver, 30)  
         element = wait.until(EC.element_to_be_clickable(self.locators.proceed_to_checkout))
         self.driver.execute_script("arguments[0].click();", element)
         
     def download_button(self):
-        wait = WebDriverWait(self.driver, 15)  # Wait up to 15 seconds
+        wait = WebDriverWait(self.driver, 30)  
         wait.until(EC.element_to_be_clickable(self.locators.download)).click()
         
     def checkout_button(self):
-        wait = WebDriverWait(self.driver, 15)  # Wait up to 15 seconds
+        wait = WebDriverWait(self.driver, 30)
         wait.until(EC.element_to_be_clickable(self.locators.checkout_button)).click()

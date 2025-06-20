@@ -7,6 +7,7 @@ import json
 import requests
 import os
 from selenium.common.exceptions import StaleElementReferenceException
+from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.support.ui import WebDriverWait
 from base_pages.login_page import LoginPage
 from base_pages.employees_page import EmployeePage
@@ -14,13 +15,14 @@ from utilities.read_properties import ReadConfig
 from utilities.customLogger import LogGenerate
 
 from selenium.webdriver.common.by import By
+from test_pages.fake_data import FakeData
 
 # read the json user data
 with open("user_data.json", "r") as file:
     user_data = json.load(file)
 
 @pytest.fixture(autouse=True)
-def setup(request):
+def setup(request: pytest.FixtureRequest):
     """Fixture to initialize application instance and ensure logging at the end of each test."""
 
     # Finalizer ensures logging after each test execution (even on failure)
@@ -33,7 +35,7 @@ def setup(request):
     
 @allure.title("Login Page Logo Test")
 @allure.description("This is test of login page logo")
-def test_home_page(driver):
+def test_home_page(driver: WebDriver):
     logger = LogGenerate.logger_file()
     logger.info(f"Starting Test: {inspect.currentframe().f_code.co_name}")
     
@@ -68,7 +70,7 @@ def test_home_page(driver):
     
 @allure.title("Login Page Test")
 @allure.description("This is test of login page")        
-def test_login_window_valid_cred(driver):
+def test_login_window_valid_cred(driver: WebDriver):
     logger = LogGenerate.logger_file()
     logger.info(f"Starting Test: {inspect.currentframe().f_code.co_name}")
 
@@ -114,7 +116,7 @@ def test_login_window_valid_cred(driver):
         
 @allure.title("Dashboard Page Test")
 @allure.description("This is test of dashboard page-add new employee")        
-def test_add_new_employee(driver):
+def test_add_new_employee(driver: WebDriver):
     logger = LogGenerate.logger_file()
     logger.info(f"Starting Test: {inspect.currentframe().f_code.co_name}")
 
@@ -150,48 +152,50 @@ def test_add_new_employee(driver):
     
 @allure.title("Add New Employee Test")
 @allure.description("This is test of add new employee deatils")   
-def test_add_new_employee_details(driver):
+def test_add_new_employee_details(driver: WebDriver):
     logger = LogGenerate.logger_file()
     logger.info(f"Starting Test: {inspect.currentframe().f_code.co_name}")
 
     passW = ReadConfig.get_valid_passWord()
+    
+    fake_data = FakeData()
         
     try:
-        ssn = random.randint(100_000_000, 999_999_999)
+
         employee_page = EmployeePage(driver) 
         
         employee_page.enter_password(passW)
         logger.info(f"Password entered: {passW}")
+
+        employee_page.add_firstname(fake_data.firstName)
+        logger.info(f"First Name entered: {fake_data.firstName}")
         
-        employee_page.add_firstname(user_data["firstname"])
-        logger.info(f"First Name entered: {user_data["firstname"]}")
+        employee_page.add_middlename(fake_data.middleName)
+        logger.info(f"Middle Name entered: {fake_data.middleName}")
         
-        employee_page.add_middlename(user_data["middlename"])
-        logger.info(f"Middle Name entered: {user_data["middlename"]}")
+        employee_page.add_lastname(fake_data.lastName)
+        logger.info(f"Last Name entered: {fake_data.lastName}")
         
-        employee_page.add_lastname(user_data["lastname"])
-        logger.info(f"Last Name entered: {user_data["lastname"]}")
+        employee_page.ssn_id(fake_data.ssn)
+        logger.info(f"SSN entered: {fake_data.ssn}")
         
-        employee_page.ssn_id(ssn)
-        logger.info(f"SSN entered: {ssn}")
+        employee_page.add_address(fake_data.address)
+        logger.info(f"Address entered: {fake_data.address}")
         
-        employee_page.add_address(user_data["address_1"])
-        logger.info(f"Address entered: {user_data["address_1"]}")
+        employee_page.add_city(fake_data.city)
+        logger.info(f"City entered: {fake_data.city}")
         
-        employee_page.add_city(user_data["city_name"])
-        logger.info(f"City entered: {user_data["city_name"]}")
+        employee_page.add_state(fake_data.state)
+        logger.info(f"State entered: {fake_data.state}")
         
-        employee_page.add_state(user_data["state"])
-        logger.info(f"State entered: {user_data["state"]}")
+        employee_page.add_zipcode(fake_data.zipcode)
+        logger.info(f"Zipcode entered: {fake_data.zipcode}")
         
-        employee_page.add_zipcode(user_data["zip"])
-        logger.info(f"Zipcode entered: {user_data["zip"]}")
+        employee_page.add_country(fake_data.country)
+        logger.info(f"Country entered: {fake_data.country}")
         
-        employee_page.add_country(user_data["country"])
-        logger.info(f"Country entered: {user_data["country"]}")
-        
-        employee_page.add_email(user_data["email"])
-        logger.info(f"Email entered: {user_data["email"]}")
+        employee_page.add_email(fake_data.email)
+        logger.info(f"Email entered: {fake_data.email}")
         
         employee_page.preferred_communication(user_data["communication_mode"])
         logger.info(f"Communication mode entered: {user_data["communication_mode"]}")
@@ -256,12 +260,14 @@ def test_add_new_employee_details(driver):
 
 @allure.title("Benefits and Family Page Test")
 @allure.description("This is test of benefits and family page")       
-def test_benefits_and_family(driver):
+def test_benefits_and_family(driver: WebDriver):
     logger = LogGenerate.logger_file()
     logger.info(f"Starting Test: {inspect.currentframe().f_code.co_name}")
-
+    
+    fake_data = FakeData()
+    
     try:
-        ssn = random.randint(100_000_000, 999_999_999)
+
         employee_page = EmployeePage(driver) 
 
         employee_page.add_new_hire_enrollment()
@@ -276,26 +282,26 @@ def test_benefits_and_family(driver):
         employee_page.add_new_family_member()
         logger.info(f"Clicked on New Family member button")
 
-        employee_page.add_firstname(user_data["sp_first_name"])
-        logger.info(f"First name entered: {user_data["sp_first_name"]}")
+        employee_page.add_firstname(fake_data.sp_firstName)
+        logger.info(f"First name entered: {fake_data.sp_firstName}")
         
-        employee_page.add_middlename(user_data["sp_middle_name"])
-        logger.info(f"Middle name entered: {user_data["sp_middle_name"]}")
+        employee_page.add_middlename(fake_data.sp_middleName)
+        logger.info(f"Middle name entered: {fake_data.sp_middleName}")
         
-        employee_page.add_lastname(user_data["sp_last_name"])
-        logger.info(f"Last name entered: {user_data["sp_last_name"]}")
+        employee_page.add_lastname(fake_data.sp_lastName)
+        logger.info(f"Last name entered: {fake_data.sp_lastName}")
         
-        employee_page.ssn_id_1(ssn)
-        logger.info(f"SSN ID entered: {ssn}")
+        employee_page.ssn_id_1(fake_data.sp_ssn)
+        logger.info(f"SSN ID entered: {fake_data.sp_ssn}")
 
-        employee_page.add_birthdate(user_data["birthdate"])
-        logger.info(f"Birthdate entered: {user_data["birthdate"]}")
+        employee_page.add_birthdate(user_data["sp_birthdate"])
+        logger.info(f"Birthdate entered: {user_data["sp_birthdate"]}")
         
         employee_page.add_gender(user_data["gender_female"])
         logger.info(f"Gender entered: {user_data["gender_female"]}")
         
-        employee_page.add_relationship(user_data["relationship"])
-        logger.info(f"Relationship entered: {user_data["relationship"]}")
+        employee_page.add_relationship(fake_data.relationship)
+        logger.info(f"Relationship entered: {fake_data.relationship}")
         
         employee_page.submit_button()
         logger.info(f"Clicked on Next: Review My Family button")
@@ -334,7 +340,7 @@ def test_benefits_and_family(driver):
         
 @allure.title("Add Medical Plan Test")
 @allure.description("This is test of add medical plan")           
-def test_add_medical_plan(driver):
+def test_add_medical_plan(driver: WebDriver):
     logger = LogGenerate.logger_file()
     logger.info(f"Starting Test: {inspect.currentframe().f_code.co_name}")
 
@@ -351,7 +357,7 @@ def test_add_medical_plan(driver):
         logger.info(f"Clicked on radio subscriber button")
         
         employee_page.swipe_right_button()
-        logger.info(f"Clicked on radio subscriber button")
+        logger.info(f"Clicked on swipe right button")
         
         employee_page.submit_button()
         logger.info(f"Clicked on save button")
@@ -373,7 +379,7 @@ def test_add_medical_plan(driver):
 
 @allure.title("Add Dental Plan API Test")
 @allure.description("This is test of add dental plan using put requests api")         
-def test_add_dental_plan(driver):
+def test_add_dental_plan(driver: WebDriver):
     logger = LogGenerate.logger_file()
     logger.info(f"Starting Test: {inspect.currentframe().f_code.co_name}")
     
@@ -432,9 +438,10 @@ def test_add_dental_plan(driver):
         logger.info(f"General error failed: {e}")
         raise
     
+#@pytest.mark.repeat(3)
 @allure.title("Admin Tab and Download Test")
 @allure.description("This is test of admin tab>proceed to checkout and download button")     
-def test_admin_proceed_and_download(driver):
+def test_admin_proceed_and_download(driver: WebDriver):
     logger = LogGenerate.logger_file()
     logger.info(f"Starting Test: {inspect.currentframe().f_code.co_name}")
 
